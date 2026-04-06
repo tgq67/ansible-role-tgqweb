@@ -1,2 +1,8 @@
 ---
+# defaults/main.yml
+
+nginx_listen_port: 80
+nginx_website_title: "Hello, Knox!"
+nginx_website_content: "Welcome to the KnoxWeb role-powered website!"
+nginx_root_directory: /var/www/html
 # defaults file for tgqweb

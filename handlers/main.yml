@@ -1,2 +1,8 @@
 ---
 # handlers file for tgqweb
+- name: Restart nginx 
+  service:
+    name: nginx
+    state: restarted
+    
+

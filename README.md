@@ -10,6 +10,11 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 
 Role Variables
 --------------
+These are the default variables:   
+nginx_listen_port: 80   
+nginx_website_title: "Hello, Knox!"   
+nginx_website_content: "Welcome to the KnoxWeb role-powered website!"   
+nginx_root_directory: /var/www/html   
 
 A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 

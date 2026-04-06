@@ -11,18 +11,37 @@
     state: started
     enabled: true
 
-- name: Deploy "Hello, World!" index.html
+- name: Create Nginx website content
   copy:
-    src: index.html
-    dest: /var/www/html/index.html
+    dest: "{{ nginx_root_directory }}/index.html"
+    content: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>{{ nginx_website_title }}</title>
+      </head>
+      <body>
+          <h1>{{ nginx_website_title }}</h1>
+          <p>{{ nginx_website_content }}</p>
+      </body>
+      </html>
     owner: www-data
     group: www-data
-    mode: '0644'
+    mode: "0644"
 
 - name: Ensure default Nginx configuration is enabled
   file:
     path: /etc/nginx/sites-enabled/default
     state: link
+
+- name: Update Nginx configuration to listen on the defined port
+  lineinfile:
+    path: /etc/nginx/sites-available/default
+    regexp: "listen .*;"
+    line: "listen {{ nginx_listen_port }};"
+    notify: Restart nginx
 
 - name: Reload Nginx to apply changes
   service:

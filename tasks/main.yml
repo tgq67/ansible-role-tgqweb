@@ -1,0 +1,30 @@
+---
+- name: Ensure Nginx is installed
+  apt:
+    name: nginx
+    state: present
+    update_cache: true
+
+- name: Start and enable Nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Deploy "Hello, World!" index.html
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
+- name: Ensure default Nginx configuration is enabled
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: link
+
+- name: Reload Nginx to apply changes
+  service:
+    name: nginx
+    state: reloaded

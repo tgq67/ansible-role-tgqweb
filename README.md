@@ -10,7 +10,8 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 
 Role Variables
 --------------
-These are the default variables:   
+These are the default variables: 
+You can adjust these in your playbook.  
 nginx_listen_port: 80   
 nginx_website_title: "Hello, Knox!"   
 nginx_website_content: "Welcome to the KnoxWeb role-powered website!"   
